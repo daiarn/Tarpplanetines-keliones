@@ -1,0 +1,11 @@
+@(hotels: List[Hotel])
+<div>
+    <h2>Available hotels</h2>
+    <p>Hotel name Address </p>
+    <ul>
+        @for(hotel <- hotels) {
+        <li> @hotel.getName() @hotel.getAddress()</li>
+        }
+    </ul>
+</div>
+

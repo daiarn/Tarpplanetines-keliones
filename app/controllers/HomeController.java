@@ -2,6 +2,9 @@ package controllers;
 
 import play.mvc.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * This controller contains an action to handle HTTP requests
  * to the application's home page.
@@ -26,4 +29,8 @@ public class HomeController extends Controller {
         return ok(views.html.tutorial.render());
     }
 
+    public Result hello( ) {
+        List<String> stringList = Arrays.asList("First","Second","Third","Fourth");
+        return ok(views.html.hello.render(stringList));
+    }
 }

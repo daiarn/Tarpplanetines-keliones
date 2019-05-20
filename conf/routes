@@ -6,7 +6,6 @@
 GET     /                           controllers.HomeController.index
 GET    /explore                     controllers.HomeController.explore
 GET    /tutorial                    controllers.HomeController.tutorial
-
-
+GET    /hotels                      controllers.HotelController.listHotels
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
