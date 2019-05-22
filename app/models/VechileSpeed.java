@@ -1,4 +1,4 @@
 package models;
 
-public class VechileSpeed {
+public enum  VechileSpeed {
 }

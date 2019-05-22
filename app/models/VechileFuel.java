@@ -1,4 +1,4 @@
 package models;
 
-public enum Vechilefuel {
+public enum VechileFuel {
 }
