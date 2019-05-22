@@ -31,6 +31,6 @@ public class HomeController extends Controller {
 
     public Result hello( ) {
         List<String> stringList = Arrays.asList("First","Second","Third","Fourth");
-        return ok(views.html.hello.render(stringList));
+        return ok();
     }
 }
