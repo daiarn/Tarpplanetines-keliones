@@ -13,7 +13,6 @@ public class Reservation extends Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
     public String nr;
-    public ReservationState state;
     public Date Date;
     public String takeOffPlace;
     public Double finalPrice;
@@ -21,6 +20,8 @@ public class Reservation extends Model {
     public Date takeOffDate;
     public Date arrivingDate;
     public Date comeBackDate;
+    @ManyToOne
+    public ReservationState state;
     @ManyToOne
     public Hotel hotel;
     @ManyToOne

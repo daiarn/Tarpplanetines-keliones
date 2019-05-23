@@ -12,6 +12,7 @@ public class Vechile extends Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
     public String name;
+    @ManyToOne
     public VechileFuel fuel;
 
     public static Finder<Integer,Vechile> find = new Finder<>(Vechile.class);
