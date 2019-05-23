@@ -1,23 +1,24 @@
 package models;
 
-public class Hotel {
 
-    private String name;
-    private String address;
+import io.ebean.*;
+import play.data.validation.Constraints;
 
-    public Hotel() {
-    }
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-    public Hotel(String name, String address) {
-        this.name = name;
-        this.address = address;
-    }
 
-    public String getName() {
-        return name;
-    }
+@Entity
+public class Hotel extends Model {
 
-    public String getAddress() {
-        return address;
-    }
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer id;
+    @Constraints.Required
+    public String name;
+    @Constraints.Required
+    public String address;
+
+    public static Finder<Integer,Hotel> find = new Finder<>(Hotel.class);
 }
