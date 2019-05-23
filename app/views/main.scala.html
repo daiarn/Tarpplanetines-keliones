@@ -12,21 +12,38 @@
 <head>
     <title>@title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/main.css")'>
-    <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/prism.css")'>
+    <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("css/bootstrap.min.css")'>
+@*    <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("css/style.css")'>*@
+@*    <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("css/prism.css")'>*@
     <link rel="shortcut icon" type="image/png" href='@routes.Assets.versioned("images/favicon.png")'>
-    <script src='@routes.Assets.versioned("javascripts/hello.js")' type="text/javascript"></script>
-    <script src='@routes.Assets.versioned("javascripts/prism.js")' type="text/javascript"></script>
 </head>
 
 <body>
-    <section id="top">
-        <div class="wrapper">
-            <img class="resize" src="assets/images/play_icon_reverse.svg" alt="logo" />
-            <h1>Play Hello World Web Tutorial</h1>
-        </div>
-    </section>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Tarp planetinės kelionės</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@routes.HotelController.listHotels()">Hotels</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
     @content
 </body>
 
+@*    <script src='@routes.Assets.versioned("../../public/js/custom.js")' type="text/javascript"></script>*@
+    <script src='@routes.Assets.versioned("js/jquery-3.4.1.min.js")' type="text/javascript"></script>
+    <script src='@routes.Assets.versioned("js/bootstrap.min.js")' type="text/javascript"></script>
 </html>
