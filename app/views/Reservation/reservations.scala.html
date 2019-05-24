@@ -1,0 +1,25 @@
+@(reservations: List[Reservation])
+
+@main("Reservations") {
+    <div class="container">
+        <h2>All hotels</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @*            @for(reservation <- reservations) {*@
+                @*                <tr>*@
+                @*                    <td>@Hotel.name/td>*@
+                @*                    <td>@Hotel.address</td>*@
+                @*                    <td>Do some stuff</td>*@
+                @*                </tr>*@
+                @*            }*@
+            </tbody>
+        </table>
+    </div>
+}

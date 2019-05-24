@@ -12,7 +12,7 @@ public class HotelController extends Controller {
 
         List<Hotel> hotels = Hotel.find.all();
 
-        return ok(views.html.hotels.render(hotels));
+        return ok(views.html.hotel.hotels.render(hotels));
     }
 
 }
