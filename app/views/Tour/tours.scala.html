@@ -7,18 +7,20 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Address</th>
-                    <th>Action</th>
+                    <th>description</th>
+                    <th>price</th>
+                    <th>seat count</th>
                 </tr>
             </thead>
             <tbody>
-@*            @for(tour <- tours) {*@
-@*                <tr>*@
-@*                    <td>@Hotel.name/td>*@
-@*                    <td>@Hotel.address</td>*@
-@*                    <td>Do some stuff</td>*@
-@*                </tr>*@
-@*            }*@
+            @for(tour <- tours) {
+                <tr>
+                    <td> <a href=@routes.TourController.getTour(tour.id)> @tour.name </a> </td>
+                    <td> <a href=@routes.TourController.getTour(tour.id)> @tour.description </a> </td>
+                    <td> <a href=@routes.TourController.getTour(tour.id)> @tour.price     </a> </td>
+                    <td> <a href=@routes.TourController.getTour(tour.id)> @tour.seatCount </a> </td>
+                </tr>
+            }
             </tbody>
         </table>
     </div>
