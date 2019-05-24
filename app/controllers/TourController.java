@@ -16,4 +16,12 @@ public class TourController extends Controller {
         return ok(views.html.Tour.tours.render(tourList));
     }
 
+    public Result getTour(Integer id){
+
+        Tour tour = Tour.find.byId(id);
+
+        return ok(views.html.Tour.tour.render(tour));
+
+    }
+
 }
