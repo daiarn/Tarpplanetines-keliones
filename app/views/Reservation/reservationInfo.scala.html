@@ -1,0 +1,23 @@
+@(reservation: Reservation)
+
+@main("Voyage") {
+    <div class="container">
+        <h2>Voyage</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Take Off Place</th>
+                    <th>Final Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@reservation.Date</td>
+                    <td>@reservation.takeOffPlace</td>
+                    <td>@reservation.finalPrice</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
