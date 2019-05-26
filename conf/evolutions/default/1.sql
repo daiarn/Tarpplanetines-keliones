@@ -118,10 +118,22 @@ create table reservation_state (
 create table seat (
   id                            integer auto_increment not null,
   row                           integer,
-  column                        integer,
+  col                           integer,
   reservation_id                integer,
   flight_class_id               integer,
   constraint pk_seat primary key (id)
+);
+
+create table seatentertainment (
+  seat_id                       integer not null,
+  entertainment_id              integer not null,
+  constraint pk_seatentertainment primary key (seat_id,entertainment_id)
+);
+
+create table seatmeal (
+  seat_id                       integer not null,
+  meal_id                       integer not null,
+  constraint pk_seatmeal primary key (seat_id,meal_id)
 );
 
 create table tour (
@@ -158,6 +170,7 @@ create table voyage_price (
   calculation_date              datetime(6),
   distance_from_earth           double,
   speed_id                      integer,
+  reservation_id                integer,
   constraint pk_voyage_price primary key (id)
 );
 
@@ -182,6 +195,18 @@ alter table seat add constraint fk_seat_reservation_id foreign key (reservation_
 create index ix_seat_flight_class_id on seat (flight_class_id);
 alter table seat add constraint fk_seat_flight_class_id foreign key (flight_class_id) references flight_class (id) on delete restrict on update restrict;
 
+create index ix_seatentertainment_seat on seatentertainment (seat_id);
+alter table seatentertainment add constraint fk_seatentertainment_seat foreign key (seat_id) references seat (id) on delete restrict on update restrict;
+
+create index ix_seatentertainment_entertainment on seatentertainment (entertainment_id);
+alter table seatentertainment add constraint fk_seatentertainment_entertainment foreign key (entertainment_id) references entertainment (id) on delete restrict on update restrict;
+
+create index ix_seatmeal_seat on seatmeal (seat_id);
+alter table seatmeal add constraint fk_seatmeal_seat foreign key (seat_id) references seat (id) on delete restrict on update restrict;
+
+create index ix_seatmeal_meal on seatmeal (meal_id);
+alter table seatmeal add constraint fk_seatmeal_meal foreign key (meal_id) references meal (id) on delete restrict on update restrict;
+
 create index ix_tour_hotel_id on tour (hotel_id);
 alter table tour add constraint fk_tour_hotel_id foreign key (hotel_id) references hotel (id) on delete restrict on update restrict;
 
@@ -190,6 +215,9 @@ alter table vechile add constraint fk_vechile_fuel_id foreign key (fuel_id) refe
 
 create index ix_voyage_price_speed_id on voyage_price (speed_id);
 alter table voyage_price add constraint fk_voyage_price_speed_id foreign key (speed_id) references vechile_speed (id) on delete restrict on update restrict;
+
+create index ix_voyage_price_reservation_id on voyage_price (reservation_id);
+alter table voyage_price add constraint fk_voyage_price_reservation_id foreign key (reservation_id) references reservation (id) on delete restrict on update restrict;
 
 
 # --- !Downs
@@ -215,6 +243,18 @@ drop index ix_seat_reservation_id on seat;
 alter table seat drop foreign key fk_seat_flight_class_id;
 drop index ix_seat_flight_class_id on seat;
 
+alter table seatentertainment drop foreign key fk_seatentertainment_seat;
+drop index ix_seatentertainment_seat on seatentertainment;
+
+alter table seatentertainment drop foreign key fk_seatentertainment_entertainment;
+drop index ix_seatentertainment_entertainment on seatentertainment;
+
+alter table seatmeal drop foreign key fk_seatmeal_seat;
+drop index ix_seatmeal_seat on seatmeal;
+
+alter table seatmeal drop foreign key fk_seatmeal_meal;
+drop index ix_seatmeal_meal on seatmeal;
+
 alter table tour drop foreign key fk_tour_hotel_id;
 drop index ix_tour_hotel_id on tour;
 
@@ -223,6 +263,9 @@ drop index ix_vechile_fuel_id on vechile;
 
 alter table voyage_price drop foreign key fk_voyage_price_speed_id;
 drop index ix_voyage_price_speed_id on voyage_price;
+
+alter table voyage_price drop foreign key fk_voyage_price_reservation_id;
+drop index ix_voyage_price_reservation_id on voyage_price;
 
 drop table if exists entertainment;
 
@@ -239,6 +282,10 @@ drop table if exists reservation;
 drop table if exists reservation_state;
 
 drop table if exists seat;
+
+drop table if exists seatentertainment;
+
+drop table if exists seatmeal;
 
 drop table if exists tour;
 
