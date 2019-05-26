@@ -39,6 +39,12 @@ create table meal (
   constraint pk_meal primary key (id)
 );
 
+create table my_reservation (
+  id                            integer auto_increment not null,
+  email                         varchar(255),
+  constraint pk_my_reservation primary key (id)
+);
+
 create table reservation (
   id                            integer auto_increment not null,
   nr                            varchar(255),
@@ -52,6 +58,7 @@ create table reservation (
   state_id                      integer,
   hotel_id                      integer,
   vechile_id                    integer,
+  my_reservation_id             integer,
   constraint pk_reservation primary key (id)
 );
 
@@ -134,6 +141,9 @@ alter table reservation add constraint fk_reservation_hotel_id foreign key (hote
 
 create index ix_reservation_vechile_id on reservation (vechile_id);
 alter table reservation add constraint fk_reservation_vechile_id foreign key (vechile_id) references vechile (id) on delete restrict on update restrict;
+
+create index ix_reservation_my_reservation_id on reservation (my_reservation_id);
+alter table reservation add constraint fk_reservation_my_reservation_id foreign key (my_reservation_id) references my_reservation (id) on delete restrict on update restrict;
 
 create index ix_seat_reservation_id on seat (reservation_id);
 alter table seat add constraint fk_seat_reservation_id foreign key (reservation_id) references reservation (id) on delete restrict on update restrict;
