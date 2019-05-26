@@ -1,7 +1,7 @@
 create table entertainment (
   id                            integer auto_increment not null,
   name                          varchar(255),
-  discription                   varchar(255),
+  description                   varchar(255),
   price                         double,
   constraint pk_entertainment primary key (id)
 );
@@ -10,6 +10,7 @@ create table flight_class (
   id                            integer auto_increment not null,
   type                          varchar(255),
   seat_count                    integer,
+  vechile_id                    integer,
   constraint pk_flight_class primary key (id)
 );
 
@@ -22,7 +23,7 @@ create table hotel (
 
 create table luggage (
   id                            integer auto_increment not null,
-  dementions                    varchar(255),
+  dimensions                    varchar(255),
   weight                        integer,
   contents                      varchar(255),
   vechile_id                    integer,
@@ -63,7 +64,7 @@ create table reservation_state (
 create table seat (
   id                            integer auto_increment not null,
   row                           integer,
-  colum                         integer,
+  col                           integer,
   reservation_id                integer,
   flight_class_id               integer,
   constraint pk_seat primary key (id)
@@ -105,6 +106,9 @@ create table voyage_price (
   speed_id                      integer,
   constraint pk_voyage_price primary key (id)
 );
+
+create index ix_flight_class_vechile_id on flight_class (vechile_id);
+alter table flight_class add constraint fk_flight_class_vechile_id foreign key (vechile_id) references vechile (id) on delete restrict on update restrict;
 
 create index ix_luggage_vechile_id on luggage (vechile_id);
 alter table luggage add constraint fk_luggage_vechile_id foreign key (vechile_id) references vechile (id) on delete restrict on update restrict;
