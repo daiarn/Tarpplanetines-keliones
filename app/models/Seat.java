@@ -4,6 +4,7 @@ import io.ebean.Finder;
 import io.ebean.Model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Seat extends Model {
@@ -12,13 +13,15 @@ public class Seat extends Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
     public Integer row;
-    public Integer column;
+    public Integer col;
     @ManyToOne
     public Reservation reservation;
     @ManyToMany
-    public Entertainment entertainment;
+    @JoinTable(name = "SeatEntertainment")
+    public List<Entertainment> entertainments;
     @ManyToMany
-    public Meal meal;
+    @JoinTable(name = "SeatMeal")
+    public List<Meal> meals;
     @ManyToOne
     public FlightClass flightClass;
 

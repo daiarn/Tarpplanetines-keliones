@@ -16,6 +16,8 @@ public class VoyagePrice extends Model {
     public Double distanceFromEarth;
     @ManyToOne
     public VechileSpeed speed;
+    @ManyToOne
+    public Reservation reservation;
 
     public static Finder<Integer,VoyagePrice> find = new Finder<>(VoyagePrice.class);
 }

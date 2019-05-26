@@ -1,4 +1,17 @@
 package models;
 
-public class MyReservation {
+import io.ebean.Model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class MyReservation extends Model {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer id;
+    public String email;
 }
