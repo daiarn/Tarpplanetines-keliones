@@ -12,7 +12,7 @@ public class Seat extends Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
     public Integer row;
-    public Integer colum;
+    public Integer column;
     @ManyToOne
     public Reservation reservation;
     @ManyToMany

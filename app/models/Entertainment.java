@@ -12,7 +12,7 @@ public class Entertainment extends Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
     public String name;
-    public String discription;
+    public String description;
     public Double price;
     @ManyToMany
     public Seat seat;
