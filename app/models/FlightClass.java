@@ -13,6 +13,8 @@ public class FlightClass extends Model {
     public Integer id;
     public String Type;
     public Integer SeatCount;
+    @ManyToOne
+    public Vechile vechile;
 
     public static Finder<Integer,FlightClass> find = new Finder<>(FlightClass.class);
 }

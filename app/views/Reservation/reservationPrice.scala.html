@@ -1,0 +1,41 @@
+@import play.mvc.Http.Request
+@(reservation: Reservation, vechileSpeeds: List[VechileSpeed], price: Double)
+
+@main("Voyage price") {
+    <div class="container">
+        <h2>Voyage price = @price </h2>
+        <form action="@routes.ReservationController.calcReservationPrice(reservation.id)" method="post">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Distance From Earth</label>
+                <input type="number" class="form-control" id="distanceFromEarth" name="distanceFromEarth" placeholder="Enter distance">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Voyage type</label>
+                <select class="form-control" id="speed" name="speed">
+                    @for(speed <- vechileSpeeds) {
+                        <option id="@speed.id" value="@speed.id" name="speed">@speed.name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-dark">Submit</button>
+            </div>
+        </form>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Take Off Place</th>
+                    <th>Final Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@reservation.Date</td>
+                    <td>@reservation.takeOffPlace</td>
+                    <td>@reservation.finalPrice</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}

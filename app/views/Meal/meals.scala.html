@@ -2,23 +2,23 @@
 
 @main("Meals") {
     <div class="container">
-        <h2>All hotels</h2>
+        <h2>All meals</h2>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Address</th>
-                    <th>Action</th>
+                    <th>Description</th>
+                    <th>Price</th>
                 </tr>
             </thead>
             <tbody>
-@*            @for(meal <- meals) {*@
-@*                <tr>*@
-@*                    <td>@hotel.name/td>*@
-@*                    <td>@hotel.address</td>*@
-@*                    <td>Do some stuff</td>*@
-@*                </tr>*@
-@*            }*@
+                @for(meal <- meals) {
+                    <tr>
+                        <td>@meal.name</td>
+                        <td>@meal.description</td>
+                        <td>@meal.price</td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>

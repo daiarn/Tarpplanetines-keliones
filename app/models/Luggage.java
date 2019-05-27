@@ -11,7 +11,7 @@ public class Luggage extends Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
-    public String dementions;
+    public String dimensions;
     public Integer weight;
     public String contents;
     @ManyToOne

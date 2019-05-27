@@ -26,6 +26,8 @@ public class Reservation extends Model {
     public Hotel hotel;
     @ManyToOne
     public Vechile vechile;
+    @ManyToOne
+    public MyReservation myReservation;
 
     public static Finder<Integer,Reservation> find = new Finder<>(Reservation.class);
 }

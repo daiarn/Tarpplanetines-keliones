@@ -1,0 +1,25 @@
+@(tour: Tour)
+
+@main("Tour") {
+<div class="container">
+    <h2>Tour</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Seat count</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>@tour.name</td>
+            <td>@tour.description</td>
+            <td>@tour.price</td>
+            <td>@tour.seatCount</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+}
