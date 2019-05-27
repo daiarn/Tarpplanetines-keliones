@@ -1,5 +1,6 @@
 package models;
 
+import io.ebean.Finder;
 import io.ebean.Model;
 
 import javax.persistence.Entity;
@@ -14,4 +15,6 @@ public class MyReservation extends Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
     public String email;
+
+    public static Finder<Integer,MyReservation> find = new Finder<>(MyReservation.class);
 }
