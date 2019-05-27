@@ -14,7 +14,7 @@ public class ReservationState extends Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
-    public String name;
+    public String stateName;
 
     public static Finder<Integer,ReservationState> find = new Finder<>(ReservationState.class);
 }
