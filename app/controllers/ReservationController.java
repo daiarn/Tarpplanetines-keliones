@@ -113,4 +113,9 @@ public class ReservationController extends Controller {
 
         return ok(views.html.Reservation.myReservations.render(myVoyageList));
     }
+
+    public Result createReservation() {
+
+        return ok(views.html.Order.createReservation.render());
+    }
 }
