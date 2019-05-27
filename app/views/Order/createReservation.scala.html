@@ -1,0 +1,11 @@
+@import play.mvc.Http.Request//reikia prideti dalyku
+@()
+
+@main("Create reservation") {
+    <div class="container">
+        <h2>Create reservation</h2>
+        <form action="@routes.ReservationController.createReservation()" method="post">
+
+        </form>
+    </div>
+}

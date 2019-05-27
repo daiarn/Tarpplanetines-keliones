@@ -1,0 +1,18 @@
+@import play.mvc.Http.Request
+@(entertainments: List[Entertainment])
+
+@main("Select entertainments") {
+    <div class="container">
+        <h2>Select entertainments</h2>
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="entertainment">Entertainments</label>
+                <select class="form-control" id="example-getting-started" name="entertainment">
+                @for(entertainment <- entertainments) {
+                    <option id="@entertainment.id" value="@entertainment.id" name="entertainment">@entertainment.name</option>
+                }
+                </select>
+            </div>
+        </form>
+    </div>
+}

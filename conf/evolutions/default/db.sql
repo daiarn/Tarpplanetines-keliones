@@ -1,3 +1,9 @@
+create table allergen (
+  id                            integer auto_increment not null,
+  name                          varchar(255),
+  constraint pk_allergen primary key (id)
+);
+
 create table entertainment (
   id                            integer auto_increment not null,
   name                          varchar(255),
@@ -39,6 +45,12 @@ create table meal (
   constraint pk_meal primary key (id)
 );
 
+create table mealallergen (
+  meal_id                       integer not null,
+  allergen_id                   integer not null,
+  constraint pk_mealallergen primary key (meal_id,allergen_id)
+);
+
 create table my_reservation (
   id                            integer auto_increment not null,
   email                         varchar(255),
@@ -64,8 +76,18 @@ create table reservation (
 
 create table reservation_state (
   id                            integer auto_increment not null,
-  name                          varchar(255),
+  state_name                    varchar(255),
   constraint pk_reservation_state primary key (id)
+);
+
+create table room (
+  id                            integer auto_increment not null,
+  floor                         integer,
+  room_number                   integer,
+  beds_count                    integer,
+  bed_type                      varchar(255),
+  hotel_id                      integer,
+  constraint pk_room primary key (id)
 );
 
 create table seat (
@@ -133,6 +155,12 @@ alter table flight_class add constraint fk_flight_class_vechile_id foreign key (
 create index ix_luggage_vechile_id on luggage (vechile_id);
 alter table luggage add constraint fk_luggage_vechile_id foreign key (vechile_id) references vechile (id) on delete restrict on update restrict;
 
+create index ix_mealallergen_meal on mealallergen (meal_id);
+alter table mealallergen add constraint fk_mealallergen_meal foreign key (meal_id) references meal (id) on delete restrict on update restrict;
+
+create index ix_mealallergen_allergen on mealallergen (allergen_id);
+alter table mealallergen add constraint fk_mealallergen_allergen foreign key (allergen_id) references allergen (id) on delete restrict on update restrict;
+
 create index ix_reservation_state_id on reservation (state_id);
 alter table reservation add constraint fk_reservation_state_id foreign key (state_id) references reservation_state (id) on delete restrict on update restrict;
 
@@ -144,6 +172,9 @@ alter table reservation add constraint fk_reservation_vechile_id foreign key (ve
 
 create index ix_reservation_my_reservation_id on reservation (my_reservation_id);
 alter table reservation add constraint fk_reservation_my_reservation_id foreign key (my_reservation_id) references my_reservation (id) on delete restrict on update restrict;
+
+create index ix_room_hotel_id on room (hotel_id);
+alter table room add constraint fk_room_hotel_id foreign key (hotel_id) references hotel (id) on delete restrict on update restrict;
 
 create index ix_seat_reservation_id on seat (reservation_id);
 alter table seat add constraint fk_seat_reservation_id foreign key (reservation_id) references reservation (id) on delete restrict on update restrict;

@@ -3,17 +3,20 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET   /                            controllers.HomeController.index
-GET   /explore                     controllers.HomeController.explore
-GET   /tutorial                    controllers.HomeController.tutorial
-GET   /hotels                      controllers.HotelController.listHotels
-GET   /entertainments              controllers.EntertainmentController.listEntertainments
-GET   /meals                       controllers.MealController.listMeals
-GET   /tours                       controllers.TourController.listTours
-GET   /voyages                     controllers.ReservationController.listVoyage
-GET   /voyage                      controllers.ReservationController.getReservation(id: Integer)
-GET   /voyage-price                controllers.ReservationController.getReservationPrice(id: Integer)
-POST  /voyage-price                controllers.ReservationController.calcReservationPrice(id: Integer)
-GET   /tour                        controllers.TourController.getTour(id: Integer)
+GET     /                            controllers.HomeController.index
+GET     /explore                     controllers.HomeController.explore
+GET     /tutorial                    controllers.HomeController.tutorial
+GET     /hotels                      controllers.HotelController.listHotels
+GET     /entertainments              controllers.EntertainmentController.listEntertainments
+GET     /meals                       controllers.MealController.listMeals
+GET     /tours                       controllers.TourController.listTours
+GET     /voyages                     controllers.ReservationController.listVoyage
+GET     /voyage                      controllers.ReservationController.getReservation(id: Integer)
+GET     /voyage-price                controllers.ReservationController.getReservationPrice(id: Integer)
+POST    /voyage-price                controllers.ReservationController.calcReservationPrice(id: Integer)
+GET     /tour                        controllers.TourController.getTour(id: Integer)
+GET     /my-reservations             controllers.ReservationController.showMyReservations
+POST    /my-reservations:id          controllers.ReservationController.cancelReservation(id: Integer)
+GET     /create-reservation          controllers.ReservationController.createReservation
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

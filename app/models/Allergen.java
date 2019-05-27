@@ -9,12 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class MyReservation extends Model {
+public class Allergen extends Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
-    public String email;
+    public String name;
 
-    public static Finder<Integer,MyReservation> find = new Finder<>(MyReservation.class);
+    public static Finder<Integer,Allergen> find = new Finder<>(Allergen.class);
 }
