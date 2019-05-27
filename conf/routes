@@ -13,6 +13,7 @@ GET   /tours                       controllers.TourController.listTours
 GET   /voyages                     controllers.ReservationController.listVoyage
 GET   /voyage                      controllers.ReservationController.getReservation(id: Integer)
 GET   /voyage-price                controllers.ReservationController.getReservationPrice(id: Integer)
+POST  /voyage-price                controllers.ReservationController.calcReservationPrice(id: Integer)
 GET   /tour                        controllers.TourController.getTour(id: Integer)
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
