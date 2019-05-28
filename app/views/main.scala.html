@@ -57,8 +57,20 @@
         </nav>
     </header>
 
+    <div class="container">
 
-    @content
+        @for(key <- Array("danger","info","success","warning")){
+            @if(flash.containsKey(key)){
+                <div class="alert alert-@key">
+                    @flash.get(key)
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="glyphicon glyphicon-remove"></i></a>
+                </div>
+            }
+        }
+
+        @content
+    </div>
+
 </body>
 
 @*    <script src='@routes.Assets.versioned("../../public/js/custom.js")' type="text/javascript"></script>*@
