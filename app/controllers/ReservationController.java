@@ -47,12 +47,25 @@ public class ReservationController extends Controller {
         Reservation reservation = Reservation.find.byId(id);
         List<VechileSpeed> vechileSpeeds = VechileSpeed.find.all();
 
-        DynamicForm requestData = formFactory.form().bindFromRequest();
-        double distance = Double.parseDouble(requestData.get("distanceFromEarth"));
-        Integer speed = Integer.valueOf(requestData.get("speed"));
+        double newPrice = reservation.finalPrice;
 
-        double newPrice = VoyagePriceController.calculateNewPrice(reservation, speed, distance);
+        try {
+            DynamicForm requestData = formFactory.form().bindFromRequest();
+            double distance = Double.parseDouble(requestData.get("distanceFromEarth"));
+            if (distance < 0) {
+                flash("danger","Distance can not be negative");
+                return badRequest(views.html.Reservation.reservationPrice.render(reservation, vechileSpeeds, newPrice));
+            }
+            Integer speed = Integer.valueOf(requestData.get("speed"));
+            newPrice = VoyagePriceController.calculateNewPrice(reservation, speed, distance);
+        }
+        catch (Exception e) {
+            flash("danger","Please fill all fields");
+            return badRequest(views.html.Reservation.reservationPrice.render(reservation, vechileSpeeds, newPrice));
+        }
 
+
+        flash("success","New price calculated Successfully");
         return ok(views.html.Reservation.reservationPrice.render(reservation, vechileSpeeds, newPrice));
     }
     public List<Reservation> getMyReservations() {
