@@ -1,5 +1,7 @@
 package models;
 
+import play.data.validation.Constraints;
+
 import io.ebean.Finder;
 import io.ebean.Model;
 
@@ -15,6 +17,7 @@ public class Reservation extends Model {
     public String nr;
     public Date Date;
     public String takeOffPlace;
+    @Constraints.Min(0)
     public Double finalPrice;
     public Date PaymentDate;
     public Date takeOffDate;
