@@ -65,7 +65,7 @@ public class ReservationController extends Controller {
         }
 
 
-        flash("success","New price calculated Successfully");
+        flash("success","New price calculated successfully");
         return ok(views.html.Reservation.reservationPrice.render(reservation, vechileSpeeds, newPrice));
     }
     public List<Reservation> getMyReservations() {
@@ -75,7 +75,7 @@ public class ReservationController extends Controller {
 
         for (Reservation r : voyageList) {
             try {
-                if (r.myReservation.id == 1) {
+                if (r.myReservation.id == 1 && r.state.id != 2) {
                     myVoyageList.add(r);
                 }
             }
@@ -98,7 +98,7 @@ public class ReservationController extends Controller {
         Reservation reservation = Reservation.find.byId(id);
         try {
             if (reservation != null) {
-                if (reservation.state.id.equals(1) || reservation.state.id.equals(4)){
+                if (reservation.state.id.equals(1) || reservation.state.id.equals(3)){
                     Reservation newReservation = new Reservation();
                     newReservation.id = reservation.id;
                     newReservation.nr = reservation.nr;
@@ -115,15 +115,19 @@ public class ReservationController extends Controller {
 
                     reservation.delete();
                     newReservation.save();
+                }else {
+                    List<Reservation> myVoyageList = getMyReservations();
+                    flash("danger","Reservation can not be removed");
+                    return badRequest(views.html.Reservation.myReservations.render(myVoyageList));
                 }
             }
         }
         catch (NullPointerException e) {
-            e.printStackTrace();
+            //
         }
 
         List<Reservation> myVoyageList = getMyReservations();
-
+        flash("success","Reservation canceled successfully");
         return ok(views.html.Reservation.myReservations.render(myVoyageList));
     }
 
