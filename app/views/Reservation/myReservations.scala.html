@@ -19,11 +19,11 @@
                 <tr>
                     <td>@reservation.Date</td>
                     <td>@reservation.takeOffPlace</td>
-                    <td>@reservation.finalPrice</td>
+                    <td>@reservation.finalPrice €</td>
                     <td>@reservation.state.stateName</td>
                     <td><a class="btn btn-dark" href="@routes.ReservationController.getReservation(reservation.id)">Show information</a>
                         <form action="@routes.ReservationController.cancelReservation(reservation.id)" method="post">
-                            <button type="submit" class="btn btn-danger">Cancel</button>
+                            <button type="submit" class="btn btn-danger">Cancel reservation</button>
                         </form>
                     </td>
                 </tr>

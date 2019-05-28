@@ -3,7 +3,7 @@
 
 @main("Voyage price") {
     <div class="container">
-        <h2>Voyage price = @price </h2>
+        <h2>Voyage price = @price €</h2>
         <form action="@routes.ReservationController.calcReservationPrice(reservation.id)" method="post">
             <div class="form-group">
                 <label for="exampleInputEmail1">Distance From Earth</label>
@@ -33,7 +33,7 @@
                 <tr>
                     <td>@reservation.Date</td>
                     <td>@reservation.takeOffPlace</td>
-                    <td>@reservation.finalPrice</td>
+                    <td>@reservation.finalPrice €</td>
                 </tr>
             </tbody>
         </table>
