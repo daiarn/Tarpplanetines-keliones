@@ -4,8 +4,6 @@
 
 # An example controller showing a sample home page
 GET     /                            controllers.HomeController.index
-GET     /explore                     controllers.HomeController.explore
-GET     /tutorial                    controllers.HomeController.tutorial
 GET     /hotels                      controllers.HotelController.listHotels
 GET     /entertainments              controllers.EntertainmentController.listEntertainments
 GET     /meals                       controllers.MealController.listMeals
