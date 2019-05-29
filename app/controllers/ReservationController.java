@@ -1,15 +1,16 @@
 package controllers;
 
-import models.Reservation;
-import models.VechileSpeed;
+import models.*;
 import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.mvc.Controller;
 import play.mvc.Result;
 
 import javax.inject.Inject;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ReservationController extends Controller {
 
@@ -132,7 +133,59 @@ public class ReservationController extends Controller {
     }
 
     public Result createReservation() {
+        List<Tour> tourList = Tour.find.all();
 
-        return ok(views.html.Order.createReservation.render());
+        return ok(views.html.Order.createReservation.render(tourList));
     }
+
+    public Result selectTour(Integer id){
+
+        return redirect(routes.ReservationController.getSeats(id));
+    }
+
+
+    public Result getSeats(Integer id){
+        List<Seat> seatsList = Seat.find.all();
+
+        return ok(views.html.Order.selectSeat.render(seatsList));
+    }
+
+    public Result getMeals(Integer id){
+
+        List<Meal> mealList = Meal.find.all();
+        List<Allergen> allergenList = Allergen.find.all();
+
+        return ok(views.html.Order.selectMeal.render(mealList, allergenList));
+    }
+
+
+    public Result setSeat(){
+
+        List<Meal> mealList = Meal.find.all();
+        List<Allergen> allergenList = Allergen.find.all();
+        return ok(views.html.Order.selectMeal.render(mealList, allergenList));
+    }
+
+
+
+
+
+
+    /*
+    GET     /selectSeat:vehicleId        controllers.ReservationController.geSeats(vehicleId: Integer)
+    GET     /selectHotel:hotelId         controllers.ReservationController.selectHotel(hotelId: Integer)
+    GET     /getMeals:mealId             controllers.ReservationController.getMeals(mealId: Integer)
+
+    POST    /selectSeat:seatId           controllers.ReservationController.setSeat(seatId: Integer)
+    POST    /selectRoom:roomId           controllers.ReservationController.setRoom(roomId: Integer)
+    POST    /selectRoom:roomId           controllers.ReservationController.setMeal(roomId: Integer)
+     */
+
+
+
+
+
+
+
+
 }

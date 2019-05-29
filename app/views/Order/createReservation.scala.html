@@ -1,11 +1,37 @@
-@import play.mvc.Http.Request//reikia prideti dalyku
-@()
+@import play.mvc.Http.Request
+
+@(tours: List[Tour])
 
 @main("Create reservation") {
     <div class="container">
         <h2>Create reservation</h2>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Seat count</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for(tour <- tours) {
+            <tr>
+                <td> <a href=@routes.ReservationController.selectTour(tour.id)> @tour.name   </a> </td>
+                <td>  @tour.description </td>
+                <td>  @tour.price      </td>
+                <td>  @tour.seatCount </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+
+
         <form action="@routes.ReservationController.createReservation()" method="post">
 
         </form>
     </div>
 }
+
+

@@ -4,15 +4,17 @@
 @main("Select Seat") {
     <div class="container">
         <h2>Select Seat</h2>
-        <form action="" method="post">
+        <form action="@routes.ReservationController.setSeat()" method="post">
             <div class="form-group">
-                <label for="seat">Seatse</label>
+                <label for="seat">Seats</label>
                 <select class="form-control" id="seat" name="seat">
                 @for(seat <- seats) {
                     <option id="@seat.id" value="@seat.id" name="seat">@seat.id</option>
                 }
                 </select>
+                </td>
             </div>
+                <button type="submit" class="btn btn-dark">Confirm</button>
         </form>
     </div>
 }

@@ -1,5 +1,5 @@
 @import play.mvc.Http.Request
-@(hotels: List[Hotel], rooms: List[Room])//pridek ko dar cia reikia speju reservation id reikes ar dar ko
+@(hotels: List[Hotel], rooms: List[Room])
 
 @main("Select hotel") {
     @if(rooms == null) {
@@ -29,6 +29,11 @@
                     </select>
                 </div>
             </form>
+
+            <form action="controllers.ReservationController.setRoom(room.id)" method="post">
+                <button type="submit" class="btn btn-dark">Confirm</button>
+            </form>
+
         </div>
     }
 }

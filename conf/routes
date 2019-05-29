@@ -16,5 +16,14 @@ GET     /tour                        controllers.TourController.getTour(id: Inte
 GET     /my-reservations             controllers.ReservationController.showMyReservations
 POST    /my-reservations:id          controllers.ReservationController.cancelReservation(id: Integer)
 GET     /create-reservation          controllers.ReservationController.createReservation
+
+GET    /selectHotel                 controllers.HotelController.getHotelForm
+
+GET    /selectTour:tourId           controllers.ReservationController.selectTour(tourId: Integer)
+GET    /getSeats:seatId             controllers.ReservationController.getSeats(seatId: Integer)
+GET    /getMeals:mealId             controllers.ReservationController.getMeals(mealId: Integer)
+
+POST   /setSeat                     controllers.ReservationController.setSeat()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
